@@ -33,4 +33,8 @@
     - Instalação npm: ng add ngx-bootstrap
     - Adição automática de arquivo scss bootstrap e datepicker em styles.scss
 
+# Uso de FormsModule para filtragem de dados - ngModel - Notas 13/07/2022
+
+- https://angular.io/api/forms/FormsModule
+
 

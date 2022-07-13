@@ -1,9 +1,54 @@
-<div class="container-fluid">
-  <h1>Eventos (h1 element coming from eventos.component.html)</h1>
+<div class="container mt-4">
+  <h1>Eventos</h1>
+  <hr>
 
-  <div *ngFor="let evento of eventos">
-    <p><b>Evento:</b> {{evento.name}}</p>
-    <p><b>Data:</b> {{evento.date}}</p>
-    <hr>
+  <div>
+    <div class="form-inline my-3">
+      <label for="filtro">Filtro:</label>
+      <input class="form-control mx-sm-2" id="filtro" type="search" placeholder="Buscar por tema ou local" aria-label="Search" [(ngModel)]="filtro">
+    </div>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>
+              <button class="btn btn-dark" type="button" (click)="collapseImage()" [style.padding.px] = "imgBtnPadding" [style.font-size.px] = "imgBtnFontSize" [style.font-weight] = "imgBtnFontWeight">{{showImage ? 'Ocultar Imagem' : 'Exibir Imagem'}}</button>
+            </th>
+            <th>#</th>
+            <th>Tema</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Qtd Pessoas</th>
+            <th>Lote</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+
+        <tbody *ngIf="eventos.length">
+          <tr *ngFor="let evento of eventosFiltrados">
+            <td>
+              <img [collapse]="!showImage" [isAnimated]="true" src="assets/img/{{evento.imagem}}" alt=""
+              [style.width.px] = "imgWidth"
+              [style.max-height.px] = "imgMaxHeight">
+            </td>
+            <td>{{evento.id}}</td>
+            <td>{{evento.tema}}</td>
+            <td>{{evento.local}}</td>
+            <td>{{evento.data}}</td>
+            <td>{{evento.qtdPessoas}}</td>
+            <td>{{evento.lote}}</td>
+            <td>
+              <button class="btn btn-primary mr-2">Editar</button>
+              <button class="btn btn-danger ml-2">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot *ngIf="!eventos.length">
+          <td colspan="8" class="text-center">
+            <h4>Não existem eventos cadastrados!</h4>
+          </td>
+        </tfoot>
+    </table>
   </div>
 </div>
