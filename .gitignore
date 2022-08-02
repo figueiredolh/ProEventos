@@ -448,6 +448,7 @@ $RECYCLE.BIN/
 ## Visual Studio Code
 ##
 .vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -499,4 +500,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Imagem Diagrama
+diagramaBD.png
+diagramaERProEventos.erdplus
 

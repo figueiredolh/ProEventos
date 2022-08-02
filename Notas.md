@@ -37,4 +37,23 @@
 
 - https://angular.io/api/forms/FormsModule
 
+# Regras de negócio da aplicação - Interface IProEventosPersistence
+
+- Comuns (a cada entidade)
+    - Adicionar
+    - Atualizar
+    - Remover
+    - Remover vários
+    - Salvar mudanças (EF Core)
+
+- Eventos
+    - Retornar todos os eventos por Tema (com ou sem palestrantes)
+    - Retornar todos os eventos (com ou sem palestrantes)
+    - Retornar evento por Id (com ou sem palestrantes)
+
+- Palestrantes
+    - Retornar todos os palestrantes por Nome (com ou sem eventos)
+    - Retornar todos os palestrantes (com ou sem eventos)
+    - Retornar evento por Id (com ou sem eventos)
+
 
