@@ -1,0 +1,76 @@
+<div>
+  <div class="d-flex align-items-center my-4 justify-content-between">
+    <div class="input-group w-75">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="filtro">Filtro:</label>
+      </div>
+      <input class="form-control" id="filtro" type="search" placeholder="Buscar por tema ou local" aria-label="Search" [(ngModel)]="filtro">
+    </div>
+    <a class="btn btn-outline-primary" routerLink="/eventos/detalhe">
+      <i class="fa fa-plus"></i> Novo
+    </a>
+  </div>
+
+  <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th class="d-none d-lg-table-cell">
+            <button class="btn btn-dark" type="button" (click)="collapseImage()" [style.padding.px] = "imgBtnPadding" [style.font-size.px] = "imgBtnFontSize" [style.font-weight] = "imgBtnFontWeight">
+              <i class="{{showImage ? 'fa fa-eye-slash' : 'fa fa-eye'}}"></i>
+              {{showImage ? 'Ocultar Imagem' : 'Exibir Imagem'}}
+            </button>
+          </th>
+          <th>#</th>
+          <th>Tema</th>
+          <th>Local</th>
+          <th>Data</th>
+          <th class="d-none d-lg-table-cell">Qtd Pessoas</th>
+          <th class="d-none d-lg-table-cell">Lote</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+
+      <tbody *ngIf="eventos.length">
+        <tr *ngFor="let evento of eventosFiltrados" class="table-hover">
+          <td class="d-none d-lg-table-cell">
+            <img [collapse]="!showImage" [isAnimated]="true" src="assets/img/{{evento.imagemUrl}}" alt=""
+            [style.width.px] = "imgWidth"
+            [style.max-height.px] = "imgMaxHeight">
+          </td>
+          <td>{{evento.id}}</td>
+          <td>{{evento.tema}}</td>
+          <td>{{evento.local}}</td>
+          <td>{{evento.data | DataFormat}}</td>
+          <td class="d-none d-lg-table-cell">{{evento.qtdPessoas}}</td>
+          <td class="d-none d-lg-table-cell">{{evento.lotes[0].nome}}</td>
+          <td>
+            <button class="btn btn-primary mr-lg-1 box-button" tooltip="Editar">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-danger ml-lg-1 box-button" tooltip="Excluir" (click)="openModal(template)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="errorMessage">
+        <td colspan="8" class="text-center">
+          <p>{{errorMessage}}</p>
+        </td>
+      </tfoot>
+  </table>
+</div>
+
+<!-- Modal -->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excluir este Evento?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>
+
+<!-- Spinner -->
+<!-- <ngx-spinner type="square-jelly-box">
+  <p style="font-size: 20px; color: white">Carregando...</p>
+</ngx-spinner> -->

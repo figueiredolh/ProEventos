@@ -193,3 +193,20 @@
 - Perfil
 
 - Criação da pasta 'components' em app para uma melhor organização, a fim de abrigar todos os componentes
+
+# 21/08/2022:
+
+- Modificação de componente Titulo
+- Criação de novo layout de Filtro - Mudar estilo do input
+- Criação de botão para adicionar Evento
+- Tornar tabelas mais responsivas
+- Criação de SubComponentes e SubRotas para o componente Titulo
+- Criação de novo layout de Filtro - Adicionar hover em linha da tabela (Adicionar mais registros BD)
+
+# 28/08/2022 - 30/08/2022
+
+- Criação de component User e subcomponentes Login e Register
+- Moção de componente Perfil para User
+- Criação de HTML básico de exemplo para Login
+- Criação de HTML básico de exemplo para Register
+- Ocultação da barra de menu para Login
